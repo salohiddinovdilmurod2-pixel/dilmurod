@@ -1,143 +1,64 @@
-<form>
-    <h2>Fikr qoldiring</h2>
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yangiliklar — EMAKTAB</title>
+  <style>
+    body{font-family:sans-serif;background:#f8fafc;margin:0;padding:0;color:#0f172a}
+    header{background:#0b5ed7;color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}
+    header a{color:#fff;text-decoration:none;font-weight:600;margin-left:16px}
+    .container{max-width:900px;margin:24px auto;padding:0 16px}
+    h1{color:#0b5ed7;margin-bottom:20px}
+    .news-card{background:#fff;padding:16px;margin-bottom:16px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.05)}
+    .news-card h2{margin:0 0 8px;font-size:20px;color:#0f172a}
+    .meta{color:#64748b;font-size:13px;margin-bottom:8px}
+    footer{background:#fff;padding:16px;text-align:center;color:#64748b;margin-top:30px;border-top:1px solid #e2e8f0}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div style="font-weight:800;font-size:18px">📘 EMAKTAB</div>
+    <nav>
+      <a href="index2.html">Bosh sahifa</a>
+      <a href="">Yangiliklar</a>
+      <a href="#">Darslar</a>
+      <a href="#">O'qituvchilar</a>
+    </nav>
+  </header>
 
-    <label>Email</label>
-    <input type="email" placeholder="eshmat@gmail.com" required>
+  <!-- Main content -->
+  <div class="container">
+    <h1>So‘nggi yangiliklar</h1>
 
-    <label>URL</label>
-    <input type="url" placeholder="https://.....">
-
-    <label>Fikringiz</label>
-    <textarea placeholder="Fikringizni yozing..."></textarea>
-
-    <label>Xato turi</label>
-    <div class="checkbox-group">
-        <label><input type="checkbox"> UI</label>
-        <label><input type="checkbox"> Performance</label>
-        <label><input type="checkbox"> Security</label>
-        <label><input type="checkbox"> Skrinshod</label>
+    <div class="news-card">
+      <h2>Maktab o'quvchilari tanlovi natijalari</h2>
+      <div class="meta">18 avgust 2025 · Yangiliklar</div>
+      <p>Tanlov natijalari va sovrinlar ro'yxati e'lon qilindi. Batafsil maktab portali orqali tanishishingiz mumkin.</p>
     </div>
 
-    <label>Fayl yuklash</label>
-    <input type="file">
+    <div class="news-card">
+      <h2>Yozgi mashg'ulotlar jadvali</h2>
+      <div class="meta">10 avgust 2025 · E'lon</div>
+      <p>Boshlang'ich va o'rta sinflar uchun yozgi kurslar boshlanadi. Ro'yxatdan o'tish onlayn tarzda amalga oshiriladi.</p>
+    </div>
 
-    <label>Brozer</label>
-    <select>
-        <option selected disabled>Brozer tanlang</option>
-        <option>Chrome</option>
-        <option>Firefox</option>
-        <option>Edge</option>
-        <option>Safari</option>
-    </select>
+    <div class="news-card">
+      <h2>Onlayn darslar yo‘lga qo‘yildi</h2>
+      <div class="meta">03 iyul 2025 · Darslar</div>
+      <p>Endi o'qituvchilar o'z darslarini portaldan to'g'ridan-to'g'ri e'lon qilishlari mumkin.</p>
+    </div>
+  </div>
 
-    <button type="submit">Yuborish</button>
-</form>
-<style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(to right, #89f7fe, #66a6ff);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-    }
-    button {
-    display: block;                
-    margin: 20px auto 0 auto;      
-    padding: 12px 30px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}   
+  <!-- Footer -->
+  <footer>
+    © <span id="year"></span> EMAKTAB. Barcha huquqlar himoyalangan.
+  </footer>
 
-button:hover {
-    background-color: #0056b3;
-}
-
-
-    form {
-        background: #f9f9ff; /* Oq emas, engil kulrang-binafsha */
-        padding: 30px 35px;
-        border-radius: 16px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        max-width: 500px;
-        width: 100%;
-        border: 2px solid #d0d4ff; /* ✅ Formaga border qo‘shildi */
-        box-sizing: border-box;
-    }
-
-    h2 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    label {
-        font-weight: 600;
-        color: #444;
-        margin-bottom: 5px;
-    }
-
-    input[type="email"],
-    input[type="url"],
-    textarea,
-    select {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        font-size: 14px;
-        box-sizing: border-box;
-        transition: 0.3s;
-        background-color: #fff;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-        border-color: #66a6ff;
-        outline: none;
-        box-shadow: 0 0 6px rgba(102, 166, 255, 0.4);
-    }
-
-    textarea {
-        resize: vertical;
-        min-height: 80px;
-    }
-
-    .checkbox-group {
-        display: flex;
-        flex-direction: column;
-        padding-left: 10px;
-    }
-
-    .checkbox-group label {
-        font-weight: normal;
-        margin-bottom: 5px;
-    }
-
-    input[type="file"] {
-        padding-top: 5px;
-    }
-
-    button {
-        margin-top: 20px;
-        padding: 12px;
-        background-color: #007BFF;
-        color: white;
-        font-size: 16px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-</style>
+  <script>
+    // Footer yilini avtomatik chiqarish
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
