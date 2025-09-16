@@ -1,11 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="name" id="D14"></div>
-</body>
-</html>
+<form>
+    <h2>Fikr qoldiring</h2>
+
+    <label>Email</label>
+    <input type="email" placeholder="eshmat@gmail.com" required>
+
+    <label>URL</label>
+    <input type="url" placeholder="https://.....">
+
+    <label>Fikringiz</label>
+    <textarea placeholder="Fikringizni yozing..."></textarea>
+
+    <label>Xato turi</label>
+    <div class="checkbox-group">
+        <label><input type="checkbox"> UI</label>
+        <label><input type="checkbox"> Performance</label>
+        <label><input type="checkbox"> Security</label>
+        <label><input type="checkbox"> Skrinshod</label>
+    </div>
+
+    <label>Fayl yuklash</label>
+    <input type="file">
+
+    <label>Brozer</label>
+    <select>
+        <option selected disabled>Brozer tanlang</option>
+        <option>Chrome</option>
+        <option>Firefox</option>
+        <option>Edge</option>
+        <option>Safari</option>
+    </select>
+
+    <button type="submit">Yuborish</button>
+</form>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to right, #89f7fe, #66a6ff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+    button {
+    display: block;                
+    margin: 20px auto 0 auto;      
+    padding: 12px 30px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}   
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+    form {
+        background: #f9f9ff; /* Oq emas, engil kulrang-binafsha */
+        padding: 30px 35px;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        max-width: 500px;
+        width: 100%;
+        border: 2px solid #d0d4ff; /* ✅ Formaga border qo‘shildi */
+        box-sizing: border-box;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 5px;
+    }
+
+    input[type="email"],
+    input[type="url"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 14px;
+        box-sizing: border-box;
+        transition: 0.3s;
+        background-color: #fff;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        border-color: #66a6ff;
+        outline: none;
+        box-shadow: 0 0 6px rgba(102, 166, 255, 0.4);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+    }
+
+    .checkbox-group label {
+        font-weight: normal;
+        margin-bottom: 5px;
+    }
+
+    input[type="file"] {
+        padding-top: 5px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px;
+        background-color: #007BFF;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
