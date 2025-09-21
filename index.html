@@ -1,64 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Yangiliklar — EMAKTAB</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valyuta kurslari</title>
   <style>
-    body{font-family:sans-serif;background:#f8fafc;margin:0;padding:0;color:#0f172a}
-    header{background:#0b5ed7;color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}
-    header a{color:#fff;text-decoration:none;font-weight:600;margin-left:16px}
-    .container{max-width:900px;margin:24px auto;padding:0 16px}
-    h1{color:#0b5ed7;margin-bottom:20px}
-    .news-card{background:#fff;padding:16px;margin-bottom:16px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.05)}
-    .news-card h2{margin:0 0 8px;font-size:20px;color:#0f172a}
-    .meta{color:#64748b;font-size:13px;margin-bottom:8px}
-    footer{background:#fff;padding:16px;text-align:center;color:#64748b;margin-top:30px;border-top:1px solid #e2e8f0}
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, select {
+      padding: 8px;
+      margin: 10px 0;
+      width: 300px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    .up {
+      color: green;
+    }
+
+    .down {
+      color: red;
+    }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div style="font-weight:800;font-size:18px">📘 EMAKTAB</div>
-    <nav>
-      <a href="index2.html">Bosh sahifa</a>
-      <a href="">Yangiliklar</a>
-      <a href="#">Darslar</a>
-      <a href="#">O'qituvchilar</a>
-    </nav>
-  </header>
+  <h1>Valyuta kurslari</h1>
 
-  <!-- Main content -->
-  <div class="container">
-    <h1>So‘nggi yangiliklar</h1>
+  <input type="text" placeholder="Qidirish: USD, EVRO, Rubli..." id="searchInput" />
+  
+  <br />
 
-    <div class="news-card">
-      <h2>Maktab o'quvchilari tanlovi natijalari</h2>
-      <div class="meta">18 avgust 2025 · Yangiliklar</div>
-      <p>Tanlov natijalari va sovrinlar ro'yxati e'lon qilindi. Batafsil maktab portali orqali tanishishingiz mumkin.</p>
-    </div>
+  <label for="converter">Konvertor:</label>
+  <select id="converter">
+    <option value="USD">USD — AQSH dollari</option>
+    <option value="EUR">EUR — EVRO</option>
+    <option value="RUB">RUB — Rossiya rubli</option>
+  </select>
+  
+  <input type="number" id="uzsInput" placeholder="UZS summa (masalan: 10000)" />
+  <span id="convertedResult">= 0.00 USD</span>
 
-    <div class="news-card">
-      <h2>Yozgi mashg'ulotlar jadvali</h2>
-      <div class="meta">10 avgust 2025 · E'lon</div>
-      <p>Boshlang'ich va o'rta sinflar uchun yozgi kurslar boshlanadi. Ro'yxatdan o'tish onlayn tarzda amalga oshiriladi.</p>
-    </div>
-
-    <div class="news-card">
-      <h2>Onlayn darslar yo‘lga qo‘yildi</h2>
-      <div class="meta">03 iyul 2025 · Darslar</div>
-      <p>Endi o'qituvchilar o'z darslarini portaldan to'g'ridan-to'g'ri e'lon qilishlari mumkin.</p>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    © <span id="year"></span> EMAKTAB. Barcha huquqlar himoyalangan.
-  </footer>
+  <table>
+    <thead>
+      <tr>
+        <th>Kod</th>
+        <th>Nomi (UZ)</th>
+        <th>Nominal</th>
+        <th>Kurs (UZS)</th>
+        <th>O'zgarish</th>
+        <th>Sana</th>
+      </tr>
+    </thead>
+    <tbody id="currencyTableBody">
+      <!-- Dynamic rows go here -->
+    </tbody>
+  </table>
 
   <script>
-    // Footer yilini avtomatik chiqarish
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const data = [
+      { code: "USD", name: "AQSH dollari", rate: 12360.86, change: 5.72, date: "11.09.2025" },
+      { code: "EUR", name: "EVRO", rate: 14479.51, change: -60.02, date: "11.09.2025" },
+      { code: "RUB", name: "Rossiya rubli", rate: 145.66, change: -2.82, date: "11.09.2025" },
+      { code: "GBP", name: "Angliya funt sterlingi", rate: 16740.31, change: -46.62, date: "11.09.2025" },
+      { code: "JPY", name: "Yaponiya iyenasi", rate: 83.85, change: 0.57, date: "11.09.2025" },
+      { code: "AZN", name: "Ozarbayjon manati", rate: 7271.09, change: 3.36, date: "11.09.2025" },
+      { code: "BDT", name: "Bangladesh takasi", rate: 101.55, change: 0.03, date: "11.09.2025" },
+      { code: "BGN", name: "Bolgariya levi", rate: 7403.04, change: -30.86, date: "11.09.2025" },
+      { code: "BHD", name: "Bahrayn dinori", rate: 32787.43, change: 15.18, date: "11.09.2025" },
+      { code: "DZD", name: "Jazoir dinori", rate: 695.09, change: -16.95, date: "11.09.2025" }
+    ];
+
+    const tableBody = document.getElementById("currencyTableBody");
+    const converter = document.getElementById("converter");
+    const uzsInput = document.getElementById("uzsInput");
+    const result = document.getElementById("convertedResult");
+    const searchInput = document.getElementById("searchInput");
+
+    function renderTable(filteredData = data) {
+      tableBody.innerHTML = "";
+      filteredData.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.code}</td>
+          <td>${item.name}</td>
+          <td>1</td>
+          <td>${item.rate.toLocaleString()}</td>
+          <td class="${item.change >= 0 ? 'up' : 'down'}">${item.change >= 0 ? "▲" : "▼"} ${Math.abs(item.change)}</td>
+          <td>${item.date}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function convertCurrency() {
+      const selectedCode = converter.value;
+      const uzs = parseFloat(uzsInput.value);
+      if (isNaN(uzs)) {
+        result.textContent = "= 0.00 " + selectedCode;
+        return;
+      }
+
+      const selectedCurrency = data.find(d => d.code === selectedCode);
+      if (selectedCurrency) {
+        const converted = uzs / selectedCurrency.rate;
+        result.textContent = `= ${converted.toFixed(2)} ${selectedCode}`;
+      }
+    }
+
+    // Search functionality
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.toUpperCase();
+      const filtered = data.filter(item => 
+        item.code.includes(keyword) || 
+        item.name.toUpperCase().includes(keyword)
+      );
+      renderTable(filtered);
+    });
+
+    converter.addEventListener("change", convertCurrency);
+    uzsInput.addEventListener("input", convertCurrency);
+
+    // Initial render
+    renderTable();
   </script>
 </body>
 </html>
+
