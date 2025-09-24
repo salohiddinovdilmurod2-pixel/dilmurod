@@ -1,5 +1,19 @@
 <head>
-    ...
+    ...<script>
+  // Hozirgi sanani olish
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+
+  const formattedDate = `${day}.${month}.${year}`;
+
+  // "Sana" ustunidagi barcha kataklarni yangilash
+  document.querySelectorAll("td.sana").forEach(td => {
+    td.textContent = formattedDate;
+  });
+</script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 body {
