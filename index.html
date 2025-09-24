@@ -2,7 +2,21 @@
 <html lang="uz">
 <head>
 
-    
+    <script>
+  // Hozirgi sanani olish
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+
+  const formattedDate = `${day}.${month}.${year}`;
+
+  // "Sana" ustunidagi barcha kataklarni yangilash
+  document.querySelectorAll("td.sana").forEach(td => {
+    td.textContent = formattedDate;
+  });
+</script>
+
     <style>
      body {
     font-family: Arial, sans-serif;
@@ -132,7 +146,7 @@ h1 {
         <th>Nominal</th>
         <th>Kurs (UZS)</th>
         <th>O'zgarish</th>
-        <th>Sana</th>
+   <td class="sana">11.09.2025</td>
       </tr>
     </thead>
     <tbody id="currencyTableBody">
